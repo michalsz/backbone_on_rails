@@ -9,7 +9,7 @@ App.Routers.Recipes = Backbone.Router.extend({
         var recipe = new Recipe({ id: id });
         recipe.fetch({
             success: function(model, resp) {
-                new App.Views.Edit({ model: recipe });
+                new App.Views.Edit(recipe);
             },
             error: function() {
                 new Error({ message: 'Could not find that recipe.' });
