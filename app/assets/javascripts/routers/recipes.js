@@ -1,7 +1,7 @@
-App.Controllers.Recipes = Backbone.Router.extend({
+App.Routers.Recipes = Backbone.Router.extend({
     routes: {
-        "recipes/:id":              "edit",
         "":                         "index",
+        "recipes/:id":              "edit",
         "new":                      "newRecipe"
     },
     
@@ -19,12 +19,12 @@ App.Controllers.Recipes = Backbone.Router.extend({
     },
     
     index: function() {
-	alert('index');
         $.getJSON('/recipes', function(data) {
             if(data) {
-                var recipes = _(data).map(function(i) { return new Recipe(i); });
-		alert(recipes.length);
-                new App.Views.Index({ documents: recipes });
+                var recipes = _(data).map(function(i) {
+		    return new Recipe(i);
+		});
+		new App.Views.Index(recipes);
             } else {
                 new Error({ message: "Error loading recipes." });
             }

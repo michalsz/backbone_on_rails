@@ -1,0 +1,10 @@
+var RecipeApp = {
+    Models: {},
+    Collections: {},
+    Views: {},
+    Routers: {},
+    init: function() {
+	new ExampleApp.Routers.Tasks();
+	Backbone.history.start();
+    }
+};
